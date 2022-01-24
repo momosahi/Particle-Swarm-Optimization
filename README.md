@@ -10,6 +10,10 @@ avec :
 
 $x, y \in [-100, 100]$
 
+Son minimum global est : $f(X^*) = -1$ en $X^* = (\pi,\pi)$, C'est ce qu'on va chercher à approcher avec la méthode PSO.
+
+
+
 # PSO c'est quoi ?
 
 
