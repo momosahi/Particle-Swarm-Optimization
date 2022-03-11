@@ -1,13 +1,4 @@
-# But du projet
-
-Dans ce projet, il est question de trouver un optimum (ici le minimum) de la fonction de Easom en utilisant la méthode d'optimisation par essaims de particules (Particle Swarm Optimisation ou PSO).
-
-[Fonctions tests pour l'optimisation](https:https://en.wikipedia.org/wiki/Test_functions_for_optimization "Fonctions tests pour l'optimisation"). 
-
-Nous réalisons notre test avec la fonction de Easom.
-
-
-
-# PSO c'est quoi ?
+Le but de ce projet est la découverte, implémentation et expérimentation, d’une méthode d’optimisation devenue classique parmi les méthodes dites metaheuristiques. Parmi ces méthodes, celle des Essaims de particules (Particle Swarm) fait partie de la famille des algorithmes dits bio-inspirés (comme les algorithmes génétiques, ou les colonies de fourmis par exemple)
+The goal of this project is the discovery, implementation and experimentation of an optimization method that has become classic among so-called metaheuristic methods. Among these methods, the one 'Particle Swarms' is part of the family of so-called bio-inspired algorithms (such as genetic algorithms, or ant colonies for example)
 
 
