@@ -1,19 +1,6 @@
-# But du projet
-
-Dans ce projet, il est question de trouver un optimum (ici le minimum) de la fonction de Easom en utilisant la méthode d'optimisation par essaims de particules (Particle Swarm Optimisation ou PSO).
-
-La fonction de Easom est définie par:
-
-$$ f(x,y) = -\cos(x)\cos(y)\exp(-((x - \pi)^2 + (y - \pi)^2)) $$ 
-
-avec :
-
-$x, y \in [-100, 100]$
-
-Son minimum global est : $f(X^*) = -1$ en $X^* = (\pi,\pi)$, C'est ce qu'on va chercher à approcher avec la méthode PSO.
+Le but de ce projet est la découverte, implémentation et expérimentation, d’une méthode d’optimisation devenue classique parmi les méthodes dites metaheuristiques. Parmi ces méthodes, celle des Essaims de particules (Particle Swarm) fait partie de la famille des algorithmes dits bio-inspirés (comme les algorithmes génétiques, ou les colonies de fourmis par exemple)
 
 
-
-# PSO c'est quoi ?
+The goal of this project is the discovery, implementation and experimentation of an optimization method that has become classic among so-called metaheuristic methods. Among these methods, the one 'Particle Swarms' is part of the family of so-called bio-inspired algorithms (such as genetic algorithms, or ant colonies for example)
 
 
