@@ -20,7 +20,7 @@ class PSO:
         Inertia weight.
     phi1, phi2 : float
         Acceleration coefficients.
-    particule : int
+    particle : int
         The number of particles in the swarm.
     dim : int
         The dimensionality of the problem space.
@@ -48,19 +48,19 @@ class PSO:
         A dictionary storing the positions of all particles at each iteration.
     """
 
-    def __init__(self, fonction, dim=None, particule=50, iteration=120, min=-100, max=100, w=0.8, phi1=2, phi2=2):
+    def __init__(self, fonction, dim=None, particle=50, iteration=120, min=-100, max=100, w=0.8, phi1=2, phi2=2):
         self.fonction = fonction
         self.w = w  # inertie
         self.phi1, self.phi2 = phi1, phi2  # coeff d'acceleration
-        self.particule = particule
+        self.particle = particle
         self.dim = dim
         self.iteration = iteration  # nombre itération
 
         self.min, self.max = np.array(min) * np.ones(self.dim), np.array(max) * np.ones(self.dim)
 
-        self.position = np.random.uniform(low=self.min, high=self.max, size=(self.particule, self.dim))
+        self.position = np.random.uniform(low=self.min, high=self.max, size=(self.particle, self.dim))
         v_max = self.max - self.min
-        self.velocity = np.random.uniform(low=-v_max, high=v_max, size=(self.particule, self.dim))
+        self.velocity = np.random.uniform(low=-v_max, high=v_max, size=(self.particle, self.dim))
         self.fitness = self.eval_fonction()
         self.personal_best_position = self.position.copy()
         self.personal_best_fitness = self.fitness.copy()
@@ -79,15 +79,15 @@ class PSO:
         np.array
             the fitness values of all particles.
         """
-        self.fitness = np.zeros(self.particule)
-        for i in range(self.particule):
+        self.fitness = np.zeros(self.particle)
+        for i in range(self.particle):
             self.fitness[i] = self.fonction(self.position[i][0], self.position[i][1])
         return self.fitness
 
     def update_personal_best(self):
         """updates the personal best positions and fitness values."""
         self.condition = self.personal_best_fitness > self.fitness
-        for i in range(self.particule):
+        for i in range(self.particle):
             if self.condition[i]:
                 self.personal_best_position = self.position
                 self.personal_best_fitness = self.fitness
@@ -106,8 +106,8 @@ class PSO:
 
     def update_velocity(self):
         """updates the velocities of all particles."""
-        a = np.random.rand(self.particule, self.dim)
-        b = np.random.rand(self.particule, self.dim)
+        a = np.random.rand(self.particle, self.dim)
+        b = np.random.rand(self.particle, self.dim)
         self.velocity = (
             self.w * self.velocity
             + self.phi1 * a * (self.personal_best_position - self.position)
