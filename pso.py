@@ -2,6 +2,7 @@
 
 
 import numpy as np
+from tqdm import tqdm
 
 
 class PSO:
@@ -61,7 +62,7 @@ class PSO:
         v_max = self.max - self.min
         self.velocity = np.random.uniform(low=-v_max, high=v_max, size=(self.particule, self.dim))
         self.fitness = self.eval_fonction()
-        self.personal_best_position = self.position_x.copy()
+        self.personal_best_position = self.position.copy()
         self.personal_best_fitness = self.fitness.copy()
         self.global_best_position = np.zeros(self.dim)
         self.global_best_fitness = np.inf
@@ -127,7 +128,7 @@ class PSO:
         float
             best fitness value.
         """
-        for iteration_no in range(self.iteration):
+        for iteration_no in tqdm(range(self.iteration)):
             self.add()
             self.update_velocity()
             self.update_position()
@@ -135,14 +136,7 @@ class PSO:
             self.update_personal_best()
             self.update_global_best()
 
-            print(
-                "Iter: "
-                + str(iteration_no)
-                + " , Best fit: "
-                + str(self.global_best_fitness)
-                + " at "
-                + str(self.global_best_position)
-            )
+            print(f"Iter: {iteration_no}, Best fit: {self.global_best_fitness} at {self.global_best_position}")
 
             self.global_best_fitness_history.append(self.global_best_fitness)
 

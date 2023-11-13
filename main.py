@@ -1,5 +1,7 @@
 from pso import PSO
 import math
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 
 
 # fonction de Easom
@@ -12,12 +14,25 @@ pso = PSO(
 )
 
 
+fig, ax = plt.subplots(1, 1)
+line = plt.plot([], [], "b.")
+
+
+def update_scatter(frame):
+    plt.clf()
+    plt.xlim(-110, 110)
+    plt.ylim(-110, 110)
+    i = frame
+    plt.title("iter = " + str(i))
+    plt.setp(line, "xdata", pso.coord["X"][i][:, 0], "ydata", pso.coord["X"][i][:, 1])
+    plt.scatter(pso.coord["X"][i][:, 0], pso.coord["X"][i][:, 1], s=5, marker="o", linewidths=1)
+    return line
+
+
 if __name__ == "__main__":
     pso.run()
-    print(pso.best_position)
-    print(pso.best_fitness)
-    print(pso.best_fitness_iteration)
-    print(pso.best_position_iteration)
-    print(pso.best_fitness_history)
-    print(pso.best_position_history)
-    pso.plot()
+    print(f"global best position: {pso.global_best_position}, global best fitness: {pso.global_best_fitness}")
+    plt.plot(pso.global_best_fitness_history)
+    plt.show()
+    animation = FuncAnimation(fig, update_scatter, blit=True, interval=100, frames=pso.iteration)
+    animation.save("pso.gif", writer="pillow")
