@@ -5,7 +5,7 @@ from pso import PSO
 
 class TestPSO(unittest.TestCase):
     def setUp(self):
-        self.pso = PSO(fonction=lambda x, y: x**2 + y**2, particule=2, iteration=50, dim=2, min=-10, max=10)
+        self.pso = PSO(fonction=lambda x, y: x**2 + y**2, particle=2, iteration=50, dim=2, min=-10, max=10)
 
     def test_eval_fonction(self):
         self.pso.position = np.array([[3, 4], [5, 12]])
